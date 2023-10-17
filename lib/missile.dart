@@ -25,23 +25,21 @@ class Missile extends SpriteComponent with CollisionCallbacks {
 
     reloadSprite();
 
-    final hitbox =
-        RectangleHitbox.relative(Vector2.all(1), parentSize: Vector2.all(1));
+    add(RectangleHitbox.relative(Vector2.all(1), parentSize: Vector2.all(1)));
+
     //HitboxRectangle(relation: Vector2.all(1));
     //  hitb
+    if (!isLoadedFirst) {
+      isLoadedFirst = true;
 
+      reloadPosition();
+    }
     return super.onLoad();
   }
 
   @override
   void onGameResize(Vector2 gameSize) {
     super.onGameResize(gameSize);
-
-    if (!isLoadedFirst) {
-      isLoadedFirst = true;
-
-      reloadPosition();
-    }
   }
 
   @override

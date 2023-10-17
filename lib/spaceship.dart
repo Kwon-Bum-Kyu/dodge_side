@@ -1,5 +1,6 @@
 import 'package:dodge_side/global.dart';
 import 'package:dodge_side/missile.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/geometry.dart';
 
@@ -17,7 +18,7 @@ class SpaceShip extends SpriteComponent {
 
     // final hitbox = HitboxRectangle(relation: Vector2.all(0.5));
     // addHitbox(hitbox);
-
+    add(RectangleHitbox.relative(Vector2.all(1), parentSize: Vector2.all(1)));
     return super.onLoad();
   }
 
