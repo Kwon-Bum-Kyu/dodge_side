@@ -1,8 +1,10 @@
 enum GameStatus { pause, run, gameover }
 
+enum Direction { up, down, left, right, none }
+
 class Global {
-  static double deviceWidth = 500;
-  static double deviceHeight = 500;
+  static double deviceWidth = 0;
+  static double deviceHeight = 0;
 
   static GameStatus status = GameStatus.gameover;
   static int level = 1;

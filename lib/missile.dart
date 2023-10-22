@@ -1,12 +1,11 @@
 import 'dart:math';
-import 'package:dodge_side/global.dart';
+import 'package:dodge_side/helper/global.dart';
 import 'package:flame/collisions.dart';
-import 'package:flame/geometry.dart';
 import 'package:flame/components.dart';
 
 class Missile extends SpriteComponent with CollisionCallbacks {
   //with HasHitboxes, Collidable
-  Missile() : super(size: Vector2.all(4));
+  Missile() : super(size: Vector2.all(12));
 
   late Sprite fast;
   late Sprite normal;
@@ -29,17 +28,18 @@ class Missile extends SpriteComponent with CollisionCallbacks {
 
     //HitboxRectangle(relation: Vector2.all(1));
     //  hitb
-    if (!isLoadedFirst) {
-      isLoadedFirst = true;
 
-      reloadPosition();
-    }
     return super.onLoad();
   }
 
   @override
   void onGameResize(Vector2 gameSize) {
     super.onGameResize(gameSize);
+    if (!isLoadedFirst) {
+      isLoadedFirst = true;
+
+      reloadPosition();
+    }
   }
 
   @override

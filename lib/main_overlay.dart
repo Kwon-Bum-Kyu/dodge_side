@@ -1,5 +1,8 @@
+// ignore_for_file: no_logic_in_create_state
+
 import 'package:dodge_side/game_manager.dart';
-import 'package:dodge_side/global.dart';
+import 'package:dodge_side/helper/global.dart';
+import 'package:dodge_side/helper/joypad.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,26 +30,14 @@ class _MenuOverlayState extends State<MenuOverlay> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
-    return Column(
+    return Stack(
+      // alignment: Alignment.center,
       children: [
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: gameStatusButtonClick,
-              child: Global.isRun()
-                  ? Text(pauseText)
-                  : Global.isPause()
-                      ? Text(resumeText)
-                      : Text(startText),
-            ),
-          ],
-        ),
         (Global.isPause() || Global.isOver())
             ? const SizedBox(height: 80)
             : const SizedBox.shrink(),
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             (Global.isPause() || Global.isOver())
                 ? Column(
@@ -62,7 +53,7 @@ class _MenuOverlayState extends State<MenuOverlay> {
                               style: const TextStyle(
                                   color: Colors.red, fontSize: 80),
                             ),
-                      const SizedBox(height: 200),
+                      // const SizedBox(height: 200),
                       Text(
                         "LEVEL : ${Global.level}",
                         style:
@@ -86,11 +77,25 @@ class _MenuOverlayState extends State<MenuOverlay> {
                         style:
                             const TextStyle(color: Colors.white, fontSize: 20),
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: gameStatusButtonClick,
+                            child: Global.isRun()
+                                ? Text(pauseText)
+                                : Global.isPause()
+                                    ? Text(resumeText)
+                                    : Text(startText),
+                          ),
+                        ],
+                      ),
                     ],
                   )
                 : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 500),
+                      // const SizedBox(height: 500),
                       Text(
                         "SCORE : ${Global.score.toStringAsFixed(4)}",
                         style:
@@ -100,6 +105,11 @@ class _MenuOverlayState extends State<MenuOverlay> {
                   ),
           ],
         ),
+        Positioned(
+          left: 30,
+          bottom: 30,
+          child: Joypad(onDirectionChanged: onJoypadDirectionChanged),
+        )
       ],
     );
   }
@@ -115,7 +125,12 @@ class _MenuOverlayState extends State<MenuOverlay> {
     setState(() {});
   }
 
+  void onJoypadDirectionChanged(Direction direction) {
+    // print(direction);
+    GameManager().onJoypadDirectionChanged(direction);
+  }
+
   void refreshScreen() {
-    setState(() {});
+    // setState(() {});
   }
 }

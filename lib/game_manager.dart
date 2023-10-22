@@ -1,11 +1,14 @@
-import 'package:dodge_side/global.dart';
+import 'package:dodge_side/helper/global.dart';
 import 'package:dodge_side/main_overlay.dart';
 import 'package:dodge_side/missile.dart';
 import 'package:dodge_side/spaceship.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:flame/input.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+// import 'package:flame/input.dart';
 
-class GameManager extends FlameGame with HasCollisionDetection {
+class GameManager extends FlameGame with HasCollisionDetection, KeyboardEvents {
   late SpaceShip spaceShip;
   late MenuOverlay menu;
   final List<Missile> missiles = [];
@@ -13,7 +16,7 @@ class GameManager extends FlameGame with HasCollisionDetection {
   int createCount = 50;
 
   @override
-  Future<void>? onLoad() async {
+  Future<void> onLoad() async {
     Global.deviceWidth = size[0];
     Global.deviceHeight = size[1];
 
@@ -51,11 +54,42 @@ class GameManager extends FlameGame with HasCollisionDetection {
   }
 
   @override
-  void onMouseMove(PointerHoverInfo info) {
-    if (Global.isPause() || Global.isOver()) return;
+  KeyEventResult onKeyEvent(
+    RawKeyEvent event,
+    Set<LogicalKeyboardKey> keysPressed,
+  ) {
+    final isKeyDown = event is RawKeyDownEvent;
+    Direction? keyDirection;
 
-    spaceShip.move(info.eventPosition.game);
+    if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+      keyDirection = Direction.left;
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+      keyDirection = Direction.right;
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+      keyDirection = Direction.up;
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+      keyDirection = Direction.down;
+    }
+
+    if (isKeyDown && keyDirection != null) {
+      spaceShip.direction = keyDirection;
+    } else if (!isKeyDown && spaceShip.direction == keyDirection) {
+      spaceShip.direction = Direction.none;
+    }
+
+    return super.onKeyEvent(event, keysPressed);
   }
+
+  void onJoypadDirectionChanged(Direction direction) {
+    spaceShip.direction = direction;
+  }
+
+  // @override
+  // void onMouseMove(PointerHoverInfo info) {
+  //   if (Global.isPause() || Global.isOver()) return;
+
+  //   spaceShip.move(info.eventPosition.game);
+  // }
 
   void restart() {
     for (var missile in missiles) {
