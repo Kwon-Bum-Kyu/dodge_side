@@ -95,7 +95,6 @@ class Player extends SpriteComponent
     // If other entity is an Enemy, reduce player's health by 10.
     if (other is Enemy) {
       // Make the camera shake, with custom intensity.
-      // TODO: Investigate how camera shake should be implemented in new camera system.
       // game.primaryCamera.viewfinder.add(
       //   MoveByEffect(
       //     Vector2.all(10),

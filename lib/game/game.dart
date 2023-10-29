@@ -13,15 +13,15 @@ import '../widgets/overlays/game_over_menu.dart';
 import '../models/player_data.dart';
 import '../models/spaceship_details.dart';
 
-import 'enemy.dart';
-import 'health_bar.dart';
-import 'player.dart';
-import 'bullet.dart';
-import 'command.dart';
-import 'power_ups.dart';
-import 'enemy_manager.dart';
-import 'power_up_manager.dart';
-import 'audio_player_component.dart';
+import './enemy.dart';
+import './health_bar.dart';
+import './player.dart';
+import './bullet.dart';
+import './command.dart';
+import './power_ups.dart';
+import './enemy_manager.dart';
+import './power_up_manager.dart';
+import './audio_player_component.dart';
 
 // This class is responsible for initializing and running the game-loop.
 class SpacescapeGame extends FlameGame
@@ -62,7 +62,7 @@ class SpacescapeGame extends FlameGame
   bool _isAlreadyLoaded = false;
 
   // Returns the size of the playable area of the game window.
-  Vector2 fixedResolution = Vector2(540, 960);
+  Vector2 fixedResolution = Vector2(960, 540);
 
   // This method gets called by Flame before the game-loop begins.
   // Assets loading and adding component should be done here.
@@ -90,7 +90,7 @@ class SpacescapeGame extends FlameGame
       // Create a basic joystick component on left.
       final joystick = JoystickComponent(
         anchor: Anchor.bottomLeft,
-        position: Vector2(30, fixedResolution.y - 30),
+        position: Vector2(30, fixedResolution.y - 180),
         // size: 100,
         background: CircleComponent(
           radius: 60,

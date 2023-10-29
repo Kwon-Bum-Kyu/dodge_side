@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ Future<void> main() async {
 
   // This opens the app in fullscreen mode.
   await Flame.device.fullScreen();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
 
   // Initialize hive.
   await initHive();

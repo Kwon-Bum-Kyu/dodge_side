@@ -22,11 +22,11 @@ class SelectSpaceship extends StatelessWidget {
           children: [
             // Game title.
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 50.0),
+              padding: EdgeInsets.symmetric(vertical: 20),
               child: Text(
                 'Select',
                 style: TextStyle(
-                  fontSize: 50.0,
+                  fontSize: 24.0,
                   color: Colors.black,
                   shadows: [
                     Shadow(
@@ -67,9 +67,14 @@ class SelectSpaceship extends StatelessWidget {
                     children: [
                       Image.asset(spaceship.assetPath),
                       Text(spaceship.name),
-                      Text('Speed: ${spaceship.speed}'),
-                      Text('Level: ${spaceship.level}'),
-                      Text('Cost: ${spaceship.cost}'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Speed: ${spaceship.speed}'),
+                          Text('Level: ${spaceship.level}'),
+                          Text('Cost: ${spaceship.cost}'),
+                        ],
+                      ),
                       Consumer<PlayerData>(
                         builder: (context, playerData, child) {
                           final type =

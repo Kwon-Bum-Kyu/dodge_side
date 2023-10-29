@@ -14,7 +14,6 @@ SpacescapeGame _spacescapeGame = SpacescapeGame();
 // where all the action happens.
 class GamePlay extends StatelessWidget {
   const GamePlay({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
