@@ -47,7 +47,7 @@ class Spaceship {
     SpaceshipType.canary: Spaceship(
       name: 'Canary',
       cost: 0,
-      speed: 250,
+      speed: 1000,
       spriteId: 0,
       assetPath: 'assets/images/ship_A.png',
       level: 1,

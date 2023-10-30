@@ -137,7 +137,7 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   static const List<EnemyData> _enemyDataList = [
     EnemyData(
       killPoint: 1,
-      speed: 200,
+      speed: 500,
       spriteId: 8,
       level: 1,
       hMove: false,
