@@ -19,16 +19,15 @@ class Enemy extends SpriteComponent
     with CollisionCallbacks, HasGameReference<SpacescapeGame> {
   // The speed of this enemy.
   double _speed = 250;
-
+  final Random _random = Random();
   // This direction in which this Enemy will move.
   // Defaults to vertically downwards.
-  Vector2 moveDirection = Vector2(0, 1);
+  Vector2 moveDirection = Vector2(1, 1);
 
   // Controls for how long enemy should be freezed.
   late Timer _freezeTimer;
 
   // Holds an object of Random class to generate random numbers.
-  final _random = Random();
 
   // The data required to create this enemy.
   final EnemyData enemyData;
@@ -37,21 +36,21 @@ class Enemy extends SpriteComponent
   int _hitPoints = 10;
 
   // To display health in game world.
-  final _hpText = TextComponent(
-    text: '10 HP',
-    textRenderer: TextPaint(
-      style: const TextStyle(
-        color: Colors.white,
-        fontSize: 12,
-        fontFamily: 'BungeeInline',
-      ),
-    ),
-  );
+  // final _hpText = TextComponent(
+  //   text: '10 HP',
+  //   textRenderer: TextPaint(
+  //     style: const TextStyle(
+  //       color: Colors.white,
+  //       fontSize: 12,
+  //       fontFamily: 'BungeeInline',
+  //     ),
+  //   ),
+  // );
 
   // This method generates a random vector with its angle
   // between from 0 and 360 degrees.
   Vector2 getRandomVector() {
-    return (Vector2.random(_random) - Vector2.random(_random)) * 500;
+    return (Vector2.random(_random) - Vector2.random(_random));
   }
 
   // Returns a random direction vector with slight angle to +ve y axis.
@@ -74,8 +73,8 @@ class Enemy extends SpriteComponent
     _speed = enemyData.speed;
 
     // Set hitpoint to correct value from enemyData.
-    _hitPoints = enemyData.level * 10;
-    _hpText.text = '$_hitPoints HP';
+    _hitPoints = enemyData.level * 1;
+    // _hpText.text = '$_hitPoints HP';
 
     // Sets freeze time to 2 seconds. After 2 seconds speed will be reset.
     _freezeTimer = Timer(2, onTick: () {
@@ -105,13 +104,13 @@ class Enemy extends SpriteComponent
     // As current component is already rotated by pi radians,
     // the text component needs to be again rotated by pi radians
     // so that it is displayed correctly.
-    _hpText.angle = pi;
+    // _hpText.angle = pi;
 
-    // To place the text just behind the enemy.
-    _hpText.position = Vector2(50, 80);
+    // // To place the text just behind the enemy.
+    // _hpText.position = Vector2(50, 80);
 
-    // Add as child of current component.
-    add(_hpText);
+    // // Add as child of current component.
+    // add(_hpText);
   }
 
   @override
@@ -139,11 +138,11 @@ class Enemy extends SpriteComponent
 
     // Before dying, register a command to increase
     // player's score by 1.
-    final command = Command<Player>(action: (player) {
-      // Use the correct killPoint to increase player's score.
-      player.addToScore(enemyData.killPoint);
-    });
-    game.addCommand(command);
+    // final command = Command<Player>(action: (player) {
+    //   // Use the correct killPoint to increase player's score.
+    //   player.addToScore(enemyData.killPoint);
+    // });
+    // game.addCommand(command);
 
     // Generate 20 white circle particles with random speed and acceleration,
     // at current position of this enemy. Each particles lives for exactly
@@ -172,7 +171,7 @@ class Enemy extends SpriteComponent
     super.update(dt);
 
     // Sync-up text component and value of hitPoints.
-    _hpText.text = '$_hitPoints HP';
+    // _hpText.text = '$_hitPoints HP';
 
     // If hitPoints have reduced to zero,
     // destroy this enemy.
@@ -192,6 +191,10 @@ class Enemy extends SpriteComponent
         (position.x > (game.fixedResolution.x - size.x / 2))) {
       // Enemy is going outside vertical screen bounds, flip its x direction.
       moveDirection.x *= -1;
+    } else if ((position.y < size.y / 2) ||
+        (position.y > (game.fixedResolution.y - size.y / 2))) {
+      // Enemy is going outside vertical screen bounds, flip its x direction.
+      moveDirection.y *= -1;
     }
   }
 

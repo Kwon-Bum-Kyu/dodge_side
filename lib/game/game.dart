@@ -14,7 +14,7 @@ import '../models/player_data.dart';
 import '../models/spaceship_details.dart';
 
 import './enemy.dart';
-import './health_bar.dart';
+// import './health_bar.dart';
 import './player.dart';
 import './bullet.dart';
 import './command.dart';
@@ -48,7 +48,7 @@ class SpacescapeGame extends FlameGame
   late TextComponent _playerScore;
 
   // Displays player helth on top right.
-  late TextComponent _playerHealth;
+  // late TextComponent _playerHealth;
 
   late AudioPlayerComponent _audioPlayerComponent;
 
@@ -150,39 +150,39 @@ class SpacescapeGame extends FlameGame
       // Create text component for player score.
       _playerScore = TextComponent(
         text: 'Score: 0',
-        position: Vector2(10, 10),
+        position: Vector2(30, 30),
         textRenderer: TextPaint(
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 12,
+            fontSize: 36,
             fontFamily: 'BungeeInline',
           ),
         ),
       );
 
-      // Create text component for player health.
-      _playerHealth = TextComponent(
-        text: 'Health: 100%',
-        position: Vector2(fixedResolution.x - 10, 10),
-        textRenderer: TextPaint(
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 12,
-            fontFamily: 'BungeeInline',
-          ),
-        ),
-      );
+      // // Create text component for player health.
+      // _playerHealth = TextComponent(
+      //   text: 'Health: 100%',
+      //   position: Vector2(fixedResolution.x - 10, 10),
+      //   textRenderer: TextPaint(
+      //     style: const TextStyle(
+      //       color: Colors.white,
+      //       fontSize: 12,
+      //       fontFamily: 'BungeeInline',
+      //     ),
+      //   ),
+      // );
 
       // Anchor to top right as we want the top right
       // corner of this component to be at a specific position.
-      _playerHealth.anchor = Anchor.topRight;
+      // _playerHealth.anchor = Anchor.topRight;
 
       // Add the blue bar indicating health.
-      final healthBar = HealthBar(
-        player: _player,
-        position: _playerHealth.positionOfAnchor(Anchor.topLeft),
-        priority: -1,
-      );
+      // final healthBar = HealthBar(
+      //   player: _player,
+      //   position: _playerHealth.positionOfAnchor(Anchor.topLeft),
+      //   priority: -1,
+      // );
 
       // Makes the game use a fixed resolution irrespective of the windows size.
       await world.addAll([
@@ -193,8 +193,8 @@ class SpacescapeGame extends FlameGame
         _powerUpManager,
         button,
         _playerScore,
-        _playerHealth,
-        healthBar,
+        // _playerHealth,
+        // healthBar,
       ]);
 
       // Set this to true so that we do not initilize
@@ -273,7 +273,7 @@ class SpacescapeGame extends FlameGame
     if (_player.isMounted) {
       // Update score and health components with latest values.
       _playerScore.text = 'Score: ${_player.score}';
-      _playerHealth.text = 'Health: ${_player.health}%';
+      // _playerHealth.text = 'Health: ${_player.health}%';
 
       /// Display [GameOverMenu] when [Player.health] becomes
       /// zero and camera stops shaking.

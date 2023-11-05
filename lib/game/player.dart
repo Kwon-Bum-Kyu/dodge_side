@@ -26,7 +26,7 @@ class Player extends SpriteComponent
   JoystickComponent joystick;
 
   // Player health.
-  int _health = 100;
+  int _health = 10;
   int get health => _health;
 
   // Details of current spaceship.
@@ -243,18 +243,18 @@ class Player extends SpriteComponent
 
   // Increases health by give amount.
   void increaseHealthBy(int points) {
-    _health += points;
-    // Clamps health to 100.
-    if (_health > 100) {
-      _health = 100;
-    }
+    // _health += points;
+    // // Clamps health to 100.
+    // if (_health > 100) {
+    //   _health = 100;
+    // }
   }
 
   // Resets player score, health and position. Should be called
   // while restarting and exiting the game.
   void reset() {
     _playerData.currentScore = 0;
-    _health = 100;
+    _health = 10;
     position = game.fixedResolution / 2;
   }
 

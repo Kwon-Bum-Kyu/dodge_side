@@ -39,11 +39,14 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
 
   // Spawns a new enemy at random position at the top of the screen.
   void _spawnEnemy() {
-    Vector2 initialSize = Vector2(64, 64);
+    int randomAngle = random.nextInt(2);
+    Vector2 initialSize = Vector2(32, 32);
 
     // random.nextDouble() generates a random number between 0 and 1.
     // Multiplying it by game.fixedResolution.x makes sure that the value remains between 0 and width of screen.
-    Vector2 position = Vector2(random.nextDouble() * game.fixedResolution.x, 0);
+    Vector2 position = Vector2(
+        randomAngle == 0 ? random.nextDouble() * game.fixedResolution.x : 0,
+        randomAngle == 1 ? random.nextDouble() * game.fixedResolution.y : 0);
 
     // Clamps the vector such that the enemy sprite remains within the screen.
     position.clamp(
