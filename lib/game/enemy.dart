@@ -90,7 +90,6 @@ class Enemy extends SpriteComponent
   @override
   void onMount() {
     super.onMount();
-
     // Adding a circular hitbox with radius as 0.8 times
     // the smallest dimension of this components size.
     final shape = CircleHitbox.relative(
@@ -100,7 +99,6 @@ class Enemy extends SpriteComponent
       anchor: Anchor.center,
     );
     add(shape);
-
     // As current component is already rotated by pi radians,
     // the text component needs to be again rotated by pi radians
     // so that it is displayed correctly.
@@ -185,17 +183,20 @@ class Enemy extends SpriteComponent
     position += moveDirection * _speed * dt;
 
     // If the enemy leaves the screen, destroy it.
-    if (position.y > game.fixedResolution.y) {
+    if (position.y > game.fixedResolution.y ||
+        position.x > game.fixedResolution.x) {
       removeFromParent();
-    } else if ((position.x < size.x / 2) ||
-        (position.x > (game.fixedResolution.x - size.x / 2))) {
-      // Enemy is going outside vertical screen bounds, flip its x direction.
-      moveDirection.x *= -1;
-    } else if ((position.y < size.y / 2) ||
-        (position.y > (game.fixedResolution.y - size.y / 2))) {
-      // Enemy is going outside vertical screen bounds, flip its x direction.
-      moveDirection.y *= -1;
     }
+
+    // else if ((position.x < size.x / 2) ||
+    //     (position.x > (game.fixedResolution.x - size.x / 2))) {
+    //   // Enemy is going outside vertical screen bounds, flip its x direction.
+    //   moveDirection.x *= -1;
+    // } else if ((position.y < size.y / 2) ||
+    //     (position.y > (game.fixedResolution.y - size.y / 2))) {
+    //   // Enemy is going outside vertical screen bounds, flip its y direction.
+    //   moveDirection.y *= -1;
+    // }
   }
 
   // Pauses enemy for 2 seconds when called.
