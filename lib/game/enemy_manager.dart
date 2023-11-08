@@ -39,14 +39,39 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
 
   // Spawns a new enemy at random position at the top of the screen.
   void _spawnEnemy() {
-    int randomAngle = random.nextInt(2);
+    // 0 : 상, 1 : 하, 2 : 좌,  3 : 우
+    int randomAngle = random.nextInt(4);
     Vector2 initialSize = Vector2(32, 32);
-
+    Vector2 position;
+    Vector2 endPosition;
     // random.nextDouble() generates a random number between 0 and 1.
     // Multiplying it by game.fixedResolution.x makes sure that the value remains between 0 and width of screen.
-    Vector2 position = Vector2(
-        randomAngle == 0 ? random.nextDouble() * game.fixedResolution.x : 0,
-        randomAngle == 1 ? random.nextDouble() * game.fixedResolution.y : 0);
+    switch (randomAngle) {
+      case 0:
+        //random.nextInt(Global.deviceWidth.toInt()).toDouble()
+        position = Vector2(random.nextDouble() * game.fixedResolution.x, 0);
+        endPosition = Vector2(
+            random.nextInt(game.fixedResolution.x.toInt()).toDouble(),
+            game.fixedResolution.y);
+        break;
+      case 1:
+        position = Vector2(random.nextDouble() * game.fixedResolution.x,
+            game.fixedResolution.y);
+        endPosition = Vector2(
+            random.nextInt(game.fixedResolution.x.toInt()).toDouble(), 0);
+        break;
+      case 2:
+        position = Vector2(0, random.nextDouble() * game.fixedResolution.y);
+        endPosition = Vector2(game.fixedResolution.x,
+            random.nextInt(game.fixedResolution.y.toInt()).toDouble());
+        break;
+      default:
+        position = Vector2(game.fixedResolution.x,
+            random.nextDouble() * game.fixedResolution.y);
+        endPosition = Vector2(
+            0, random.nextInt(game.fixedResolution.y.toInt()).toDouble());
+        break;
+    }
 
     // Clamps the vector such that the enemy sprite remains within the screen.
     position.clamp(
@@ -67,11 +92,12 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       final enemyData = _enemyDataList.elementAt(random.nextInt(maxLevel * 4));
 
       Enemy enemy = Enemy(
-        sprite: spriteSheet.getSpriteById(enemyData.spriteId),
-        size: initialSize,
-        position: position,
-        enemyData: enemyData,
-      );
+          sprite: spriteSheet.getSpriteById(enemyData.spriteId),
+          size: initialSize,
+          position: position,
+          enemyData: enemyData,
+          randomAngle: randomAngle,
+          endPoint: endPosition);
 
       // Makes sure that the enemy sprite is centered.
       enemy.anchor = Anchor.center;

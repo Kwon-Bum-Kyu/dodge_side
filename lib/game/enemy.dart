@@ -34,7 +34,8 @@ class Enemy extends SpriteComponent
 
   // Represents health of this enemy.
   int _hitPoints = 10;
-
+  int angles = 0;
+  late Vector2 endPoint;
   // To display health in game world.
   // final _hpText = TextComponent(
   //   text: '10 HP',
@@ -58,12 +59,18 @@ class Enemy extends SpriteComponent
     return (Vector2.random(_random) - Vector2(0.5, -1)).normalized();
   }
 
-  Enemy({
-    required Sprite? sprite,
-    required this.enemyData,
-    required Vector2? position,
-    required Vector2? size,
-  }) : super(sprite: sprite, position: position, size: size) {
+  Enemy(
+      {required Sprite? sprite,
+      required this.enemyData,
+      required Vector2? position,
+      required Vector2? size,
+      required int? randomAngle,
+      required Vector2? endPoint})
+      : super(
+          sprite: sprite,
+          position: position,
+          size: size,
+        ) {
     // Rotates the enemy component by 180 degrees. This is needed because
     // all the sprites initially face the same direct, but we want enemies to be
     // moving in opposite direction.
@@ -85,6 +92,8 @@ class Enemy extends SpriteComponent
     if (enemyData.hMove) {
       moveDirection = getRandomDirection();
     }
+    angles = randomAngle!;
+    endPoint = endPoint;
   }
 
   @override
@@ -176,11 +185,22 @@ class Enemy extends SpriteComponent
     if (_hitPoints <= 0) {
       destroy();
     }
-
     _freezeTimer.update(dt);
-
     // Update the position of this enemy using its speed and delta time.
-    position += moveDirection * _speed * dt;
+    switch (angles) {
+      case 0:
+        position += moveDirection * _speed * dt;
+        break;
+      case 1:
+        position -= moveDirection * _speed * dt;
+        break;
+      case 2:
+        position += moveDirection * _speed * dt;
+        break;
+      default:
+        position -= moveDirection * _speed * dt;
+        break;
+    }
 
     // If the enemy leaves the screen, destroy it.
     if (position.y > game.fixedResolution.y ||
