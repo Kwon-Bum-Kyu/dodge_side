@@ -35,7 +35,8 @@ class Enemy extends SpriteComponent
   // Represents health of this enemy.
   int _hitPoints = 10;
   int angles = 0;
-  late Vector2 endPoint;
+  late Vector2 _endPoint;
+  late Vector2 startPoint;
   // To display health in game world.
   // final _hpText = TextComponent(
   //   text: '10 HP',
@@ -89,11 +90,12 @@ class Enemy extends SpriteComponent
     });
 
     // If this enemy can move horizontally, randomize the move direction.
-    if (enemyData.hMove) {
-      moveDirection = getRandomDirection();
-    }
+    // if (enemyData.hMove) {
+    //   moveDirection = getRandomDirection();
+    // }
     angles = randomAngle!;
-    endPoint = endPoint;
+    _endPoint = endPoint!;
+    startPoint = position!;
   }
 
   @override
@@ -186,25 +188,30 @@ class Enemy extends SpriteComponent
       destroy();
     }
     _freezeTimer.update(dt);
+    var diff = _endPoint - startPoint;
+    var next = diff.normalized() * _speed * dt;
+    position += next;
     // Update the position of this enemy using its speed and delta time.
-    switch (angles) {
-      case 0:
-        position += moveDirection * _speed * dt;
-        break;
-      case 1:
-        position -= moveDirection * _speed * dt;
-        break;
-      case 2:
-        position += moveDirection * _speed * dt;
-        break;
-      default:
-        position -= moveDirection * _speed * dt;
-        break;
-    }
+    // switch (angles) {
+    //   case 0:
+    //     position += moveDirection * _speed * dt;
+    //     break;
+    //   case 1:
+    //     position -= moveDirection * _speed * dt;
+    //     break;
+    //   case 2:
+    //     position += moveDirection * _speed * dt;
+    //     break;
+    //   default:
+    //     position -= moveDirection * _speed * dt;
+    //     break;
+    // }
 
     // If the enemy leaves the screen, destroy it.
     if (position.y > game.fixedResolution.y ||
-        position.x > game.fixedResolution.x) {
+        position.y < -game.fixedResolution.y ||
+        position.x > game.fixedResolution.x ||
+        position.x < -game.fixedResolution.x) {
       removeFromParent();
     }
 

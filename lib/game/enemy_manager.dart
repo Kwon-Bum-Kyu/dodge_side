@@ -29,7 +29,7 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
 
   EnemyManager({required this.spriteSheet}) : super() {
     // Sets the timer to call _spawnEnemy() after every 1 second, until timer is explicitly stops.
-    _timer = Timer(1, onTick: _spawnEnemy, repeat: true);
+    _timer = Timer(0.5, onTick: _spawnEnemy, repeat: true);
 
     // Sets freeze time to 2 seconds. After 2 seconds spawn timer will start again.
     _freezeTimer = Timer(2, onTick: () {
