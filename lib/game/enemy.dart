@@ -96,6 +96,10 @@ class Enemy extends SpriteComponent
     angles = randomAngle!;
     _endPoint = endPoint!;
     startPoint = position!;
+    //상단 포지션은 pi * 0.5 < 0 < pi * 1.5
+    //pi = 180, pi * 2 = 360, pi * 1.5 = 270, pi * 0.5 = 90
+    // print(" 1: ${pi * 0.5}, 2: ${pi * 1.5}");
+    // angle = (endPoint.clone() - startPoint.clone()).normalize() / (pi * 2);
   }
 
   @override
@@ -189,22 +193,26 @@ class Enemy extends SpriteComponent
     }
     _freezeTimer.update(dt);
     var diff = _endPoint - startPoint;
+    // var angleDiff =
+    _endPoint.clone().normalize() / startPoint.clone().normalize();
     var next = diff.normalized() * _speed * dt;
     position += next;
+    // angle = pi / (angleDiff); // max : 2
     // Update the position of this enemy using its speed and delta time.
+    // angle = pi;
     // switch (angles) {
     //   case 0:
-    //     position += moveDirection * _speed * dt;
+    //     angle = _speed * dt % (2 * pi);
     //     break;
-    //   case 1:
-    //     position -= moveDirection * _speed * dt;
-    //     break;
-    //   case 2:
-    //     position += moveDirection * _speed * dt;
-    //     break;
-    //   default:
-    //     position -= moveDirection * _speed * dt;
-    //     break;
+    // case 1:
+    //   angle = _endPoint.clone().normalize() * pi;
+    //   break;
+    // case 2:
+    //   angle = pi;
+    //   break;
+    // default:
+    //   angle = pi;
+    //   break;
     // }
 
     // If the enemy leaves the screen, destroy it.
