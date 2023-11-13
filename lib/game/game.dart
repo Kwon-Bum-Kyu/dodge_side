@@ -16,11 +16,8 @@ import '../models/spaceship_details.dart';
 import './enemy.dart';
 // import './health_bar.dart';
 import './player.dart';
-import './bullet.dart';
 import './command.dart';
-import './power_ups.dart';
 import './enemy_manager.dart';
-import './power_up_manager.dart';
 import './audio_player_component.dart';
 
 // This class is responsible for initializing and running the game-loop.
@@ -40,9 +37,6 @@ class SpacescapeGame extends FlameGame
 
   // Stores a reference to an enemy manager component.
   late EnemyManager _enemyManager;
-
-  // Stores a reference to an power-up manager component.
-  late PowerUpManager _powerUpManager;
 
   // Displays player score on top left.
   late TextComponent _playerScore;
@@ -134,18 +128,17 @@ class SpacescapeGame extends FlameGame
       _player.anchor = Anchor.center;
 
       _enemyManager = EnemyManager(spriteSheet: spriteSheet);
-      _powerUpManager = PowerUpManager();
 
       // Create a fire button component on right
-      final button = ButtonComponent(
-        button: CircleComponent(
-          radius: 60,
-          paint: Paint()..color = Colors.white.withOpacity(0.5),
-        ),
-        anchor: Anchor.bottomRight,
-        position: Vector2(fixedResolution.x - 30, fixedResolution.y - 30),
-        onPressed: _player.joystickAction,
-      );
+      // final button = ButtonComponent(
+      //   button: CircleComponent(
+      //     radius: 60,
+      //     paint: Paint()..color = Colors.white.withOpacity(0.5),
+      //   ),
+      //   anchor: Anchor.bottomRight,
+      //   position: Vector2(fixedResolution.x - 30, fixedResolution.y - 30),
+      //   onPressed: _player.joystickAction,
+      // );
 
       // Create text component for player score.
       _playerScore = TextComponent(
@@ -190,8 +183,7 @@ class SpacescapeGame extends FlameGame
         stars,
         _player,
         _enemyManager,
-        _powerUpManager,
-        button,
+        // button,
         _playerScore,
         // _playerHealth,
         // healthBar,
@@ -263,7 +255,7 @@ class SpacescapeGame extends FlameGame
         command.run(component);
       }
     }
-
+    _player.addToScore(1);
     // Remove all the commands that are processed and
     // add all new commands to be processed in next update.
     _commandList.clear();
@@ -320,7 +312,6 @@ class SpacescapeGame extends FlameGame
     // First reset player, enemy manager and power-up manager .
     _player.reset();
     _enemyManager.reset();
-    _powerUpManager.reset();
 
     // Now remove all the enemies, bullets and power ups
     // from the game world. Note that, we are not calling
@@ -330,12 +321,8 @@ class SpacescapeGame extends FlameGame
       enemy.removeFromParent();
     });
 
-    world.children.whereType<Bullet>().forEach((bullet) {
-      bullet.removeFromParent();
-    });
-
-    world.children.whereType<PowerUp>().forEach((powerUp) {
-      powerUp.removeFromParent();
-    });
+    // world.children.whereType<Bullet>().forEach((bullet) {
+    //   bullet.removeFromParent();
+    // });
   }
 }

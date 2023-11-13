@@ -130,7 +130,7 @@ class Player extends SpriteComponent
         !event.repeat &&
         event.logicalKey == LogicalKeyboardKey.space) {
       // pew pew!
-      joystickAction();
+      // joystickAction();
     }
 
     if (keysPressed.contains(LogicalKeyboardKey.keyW)) {
