@@ -264,7 +264,7 @@ class SpacescapeGame extends FlameGame
 
     if (_player.isMounted) {
       // Update score and health components with latest values.
-      _playerScore.text = 'Score: ${_player.score}';
+      _playerScore.text = 'Score: ${_player.score / 100}';
       // _playerHealth.text = 'Health: ${_player.health}%';
 
       /// Display [GameOverMenu] when [Player.health] becomes

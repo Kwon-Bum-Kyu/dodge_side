@@ -113,11 +113,15 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   int mapScoreToMaxEnemyLevel(int score) {
     int level = 1;
 
-    if (score > 1500) {
+    if (score > 2500) {
+      level = 6;
+    } else if (score > 2000) {
+      level = 5;
+    } else if (score > 1500) {
       level = 4;
-    } else if (score > 500) {
+    } else if (score > 1000) {
       level = 3;
-    } else if (score > 100) {
+    } else if (score > 500) {
       level = 2;
     }
     repeatTimer(level);
@@ -171,28 +175,28 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   static const List<EnemyData> _enemyDataList = [
     EnemyData(
       killPoint: 1,
-      speed: 500,
+      speed: 250,
       spriteId: 8,
       level: 1,
       hMove: false,
     ),
     EnemyData(
       killPoint: 2,
-      speed: 200,
+      speed: 250,
       spriteId: 9,
       level: 1,
       hMove: false,
     ),
     EnemyData(
       killPoint: 4,
-      speed: 200,
+      speed: 250,
       spriteId: 10,
       level: 1,
       hMove: false,
     ),
     EnemyData(
       killPoint: 4,
-      speed: 200,
+      speed: 250,
       spriteId: 11,
       level: 1,
       hMove: false,
@@ -227,35 +231,35 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
     ),
     EnemyData(
       killPoint: 10,
-      speed: 350,
+      speed: 250,
       spriteId: 16,
       level: 3,
       hMove: false,
     ),
     EnemyData(
       killPoint: 10,
-      speed: 350,
+      speed: 250,
       spriteId: 17,
       level: 3,
       hMove: false,
     ),
     EnemyData(
       killPoint: 10,
-      speed: 400,
+      speed: 250,
       spriteId: 18,
       level: 3,
       hMove: true,
     ),
     EnemyData(
       killPoint: 10,
-      speed: 400,
+      speed: 250,
       spriteId: 19,
       level: 3,
       hMove: false,
     ),
     EnemyData(
       killPoint: 10,
-      speed: 400,
+      speed: 250,
       spriteId: 20,
       level: 4,
       hMove: false,
