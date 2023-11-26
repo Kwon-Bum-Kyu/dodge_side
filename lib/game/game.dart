@@ -73,6 +73,9 @@ class SpacescapeGame extends FlameGame
         'nuke.png',
       ]);
 
+      ///변경해야할 사항
+      ///스프라이트는 유저용으로 따로 만들어서 로딩을 따로 하는 방식으로
+      ///총알 스프라이트는 물 스프라이트 하나로 고정
       spriteSheet = SpriteSheet.fromColumnsAndRows(
         image: images.fromCache('simpleSpace_tilesheet@2.png'),
         columns: 8,

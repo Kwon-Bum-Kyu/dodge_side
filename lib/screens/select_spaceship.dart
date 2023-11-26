@@ -26,7 +26,7 @@ class SelectSpaceship extends StatelessWidget {
               child: Text(
                 'Select',
                 style: TextStyle(
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   color: Colors.black,
                   shadows: [
                     Shadow(
