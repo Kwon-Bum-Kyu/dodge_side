@@ -71,6 +71,7 @@ class SpacescapeGame extends FlameGame
         'icon_plusSmall.png',
         'multi_fire.png',
         'nuke.png',
+        'fire_test.png'
       ]);
 
       ///변경해야할 사항
@@ -122,7 +123,7 @@ class SpacescapeGame extends FlameGame
       _player = Player(
         joystick: joystick,
         spaceshipType: spaceshipType,
-        sprite: spriteSheet.getSpriteById(spaceship.spriteId),
+        sprite: Sprite(images.fromCache('fire_test.png')),
         size: Vector2(64, 64),
         position: fixedResolution / 2,
       );

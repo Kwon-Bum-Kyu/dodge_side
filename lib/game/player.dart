@@ -264,7 +264,7 @@ class Player extends SpriteComponent
   void setSpaceshipType(SpaceshipType spaceshipType) {
     spaceshipType = spaceshipType;
     _spaceship = Spaceship.getSpaceshipByType(spaceshipType);
-    sprite = game.spriteSheet.getSpriteById(_spaceship.spriteId);
+    // sprite = game.spriteSheet.getSpriteById(_spaceship.spriteId);
   }
 
   // Allows player to first multiple bullets for 4 seconds when called.

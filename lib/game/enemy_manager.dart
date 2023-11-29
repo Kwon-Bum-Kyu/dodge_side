@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flame/experimental.dart';
@@ -35,6 +36,10 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
     _freezeTimer = Timer(2, onTick: () {
       _timer.start();
     });
+  }
+  @override
+  Future<void> onLoad() async {
+    await game.images.load('water_test.png');
   }
 
   // Spawns a new enemy at random position at the top of the screen.
@@ -92,7 +97,7 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       final enemyData = _enemyDataList.elementAt(random.nextInt(maxLevel * 4));
 
       Enemy enemy = Enemy(
-          sprite: spriteSheet.getSpriteById(enemyData.spriteId),
+          sprite: Sprite(game.images.fromCache('water_test.png')),
           size: initialSize,
           position: position,
           enemyData: enemyData,
