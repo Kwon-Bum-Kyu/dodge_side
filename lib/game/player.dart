@@ -176,23 +176,23 @@ class Player extends SpriteComponent
     );
 
     // Adds thruster particles.
-    final particleComponent = ParticleSystemComponent(
-      particle: Particle.generate(
-        count: 10,
-        lifespan: 0.1,
-        generator: (i) => AcceleratedParticle(
-          acceleration: getRandomVector(),
-          speed: getRandomVector(),
-          position: (position.clone() + Vector2(0, size.y / 3)),
-          child: CircleParticle(
-            radius: 1,
-            paint: Paint()..color = Colors.white,
-          ),
-        ),
-      ),
-    );
+    // final particleComponent = ParticleSystemComponent(
+    //   particle: Particle.generate(
+    //     count: 10,
+    //     lifespan: 0.1,
+    //     generator: (i) => AcceleratedParticle(
+    //       acceleration: getRandomVector(),
+    //       speed: getRandomVector(),
+    //       position: (position.clone() + Vector2(0, size.y / 3)),
+    //       child: CircleParticle(
+    //         radius: 1,
+    //         paint: Paint()..color = Colors.white,
+    //       ),
+    //     ),
+    //   ),
+    // );
 
-    game.world.add(particleComponent);
+    // game.world.add(particleComponent);
   }
 
   void joystickAction() {

@@ -71,12 +71,10 @@ class SpacescapeGame extends FlameGame
         'icon_plusSmall.png',
         'multi_fire.png',
         'nuke.png',
-        'fire_test.png'
+        'fire_test.png',
+        'background.png'
       ]);
 
-      ///변경해야할 사항
-      ///스프라이트는 유저용으로 따로 만들어서 로딩을 따로 하는 방식으로
-      ///총알 스프라이트는 물 스프라이트 하나로 고정
       spriteSheet = SpriteSheet.fromColumnsAndRows(
         image: images.fromCache('simpleSpace_tilesheet@2.png'),
         columns: 8,
@@ -106,6 +104,9 @@ class SpacescapeGame extends FlameGame
       await add(primaryCamera);
 
       _audioPlayerComponent = AudioPlayerComponent();
+      final background = SpriteComponent(
+          sprite: Sprite(images.fromCache('background.png')),
+          size: fixedResolution); //images.fromCache('background.png');
       final stars = await ParallaxComponent.load(
         [ParallaxImageData('stars1.png'), ParallaxImageData('stars2.png')],
         repeat: ImageRepeat.repeat,
@@ -184,6 +185,7 @@ class SpacescapeGame extends FlameGame
       // Makes the game use a fixed resolution irrespective of the windows size.
       await world.addAll([
         _audioPlayerComponent,
+        background,
         stars,
         _player,
         _enemyManager,

@@ -11,6 +11,7 @@ import 'models/spaceship_details.dart';
 
 /// 물 총알 이미지 : Image by <a href="https://www.freepik.com/free-vector/hand-drawn-animation-frames-element-collection_32376918.htm">Freepik</a>
 /// 불 캐릭터 이미지 출처 : https://elthen.itch.io/2d-pixel-art-fire-elemental
+/// 백그라운드 이미지 출처 : https://craftpix.net/file-licenses/
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
