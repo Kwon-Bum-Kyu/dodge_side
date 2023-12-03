@@ -39,7 +39,7 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   }
   @override
   Future<void> onLoad() async {
-    await game.images.load('water_test.png');
+    await game.images.load('water_bullet_default.png');
   }
 
   // Spawns a new enemy at random position at the top of the screen.
@@ -97,7 +97,7 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       final enemyData = _enemyDataList.elementAt(random.nextInt(maxLevel * 4));
 
       Enemy enemy = Enemy(
-          sprite: Sprite(game.images.fromCache('water_test.png')),
+          sprite: Sprite(game.images.fromCache('water_bullet_default.png')),
           size: initialSize,
           position: position,
           enemyData: enemyData,

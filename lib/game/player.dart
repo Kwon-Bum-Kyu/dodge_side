@@ -20,7 +20,7 @@ import 'command.dart';
 import 'audio_player_component.dart';
 
 // This component class represents the player character in game.
-class Player extends SpriteComponent
+class Player extends SpriteAnimationComponent
     with CollisionCallbacks, HasGameReference<SpacescapeGame>, KeyboardHandler {
   // Player joystick
   JoystickComponent joystick;
@@ -59,11 +59,15 @@ class Player extends SpriteComponent
   Player({
     required this.joystick,
     required this.spaceshipType,
-    Sprite? sprite,
+    required Sprite sprite,
     Vector2? position,
     Vector2? size,
   })  : _spaceship = Spaceship.getSpaceshipByType(spaceshipType),
-        super(sprite: sprite, position: position, size: size) {
+        super(position: position, size: size) {
+    animation = SpriteAnimation.fromFrameData(
+        sprite.image,
+        SpriteAnimationData.sequenced(
+            amount: 8, stepTime: 0.1, textureSize: Vector2(24, 24)));
     // Sets power up timer to 4 seconds. After 4 seconds,
     // multiple bullet will get deactivated.
     _powerUpTimer = Timer(4, onTick: () {

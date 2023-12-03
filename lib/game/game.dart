@@ -71,7 +71,7 @@ class SpacescapeGame extends FlameGame
         'icon_plusSmall.png',
         'multi_fire.png',
         'nuke.png',
-        'fire_test.png',
+        'fire_char_walk.png',
         'background.png'
       ]);
 
@@ -124,7 +124,7 @@ class SpacescapeGame extends FlameGame
       _player = Player(
         joystick: joystick,
         spaceshipType: spaceshipType,
-        sprite: Sprite(images.fromCache('fire_test.png')),
+        sprite: Sprite(images.fromCache('fire_char_walk.png')),
         size: Vector2(64, 64),
         position: fixedResolution / 2,
       );
