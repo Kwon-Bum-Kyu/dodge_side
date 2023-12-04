@@ -26,7 +26,7 @@ class MainMenu extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 50.0),
                 child: Text(
-                  'Spacescape',
+                  'Dodge Bubble',
                   style: TextStyle(
                     fontSize: 50.0,
                     color: Colors.black,

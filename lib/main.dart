@@ -12,9 +12,10 @@ import 'models/spaceship_details.dart';
 /// 물 총알 이미지 : Image by <a href="https://www.freepik.com/free-vector/hand-drawn-animation-frames-element-collection_32376918.htm">Freepik</a>
 /// 불 캐릭터 이미지 출처 : https://elthen.itch.io/2d-pixel-art-fire-elemental
 /// 백그라운드 이미지 출처 : https://craftpix.net/file-licenses/
+/// 백그라운드 이펙트 출처 : https://ufrshubham.itch.io/spacescape-extended-assets
+/// 백그라운드 BGM 출처 : https://brevynmusic.itch.io/short-circuits-energetic-8-bit
 /// 남은 작업
 /// 1. 설정 UI 변경
-/// 백그라운드 BGM 서치
 /// 난이도 조정 : 레벨에 따른 불렛 젠 속도 조절 레벨에 따른 불렛 속도 증가 삭제 or 증가치 감소
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

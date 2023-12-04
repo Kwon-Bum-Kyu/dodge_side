@@ -211,7 +211,7 @@ class SpacescapeGame extends FlameGame
       // Update the current spaceship type of player.
       _player.setSpaceshipType(playerData.spaceshipType);
     }
-    // _audioPlayerComponent.playBgm('9. Space Invaders.wav');
+    _audioPlayerComponent.playBgm('River 6-29.wav');
     super.onAttach();
   }
 

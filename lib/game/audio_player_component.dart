@@ -13,19 +13,22 @@ class AudioPlayerComponent extends Component
   Future<void>? onLoad() async {
     FlameAudio.bgm.initialize();
 
-    await FlameAudio.audioCache
-        .loadAll(['laser1.ogg', 'powerUp6.ogg', 'laserSmall_001.ogg']);
+    await FlameAudio.audioCache.loadAll([
+      'laser1.ogg',
+      'powerUp6.ogg',
+      'laserSmall_001.ogg',
+    ]);
 
-    // try {
-    //   await FlameAudio.audioCache.load(
-    //     '9. Space Invaders.wav',
-    //   );
-    // } catch (_) {
-    //   // ignore: avoid_print
-    //   print('Missing VOiD1 Gaming music pack: '
-    //       'https://void1gaming.itch.io/free-synthwave-music-pack '
-    //       'See assets/audio/README.md for more information.');
-    // }
+    try {
+      await FlameAudio.audioCache.load(
+        'River 6-29.wav',
+      );
+    } catch (_) {
+      // ignore: avoid_print
+      print('Missing VOiD1 Gaming music pack: '
+          'https://void1gaming.itch.io/free-synthwave-music-pack '
+          'See assets/audio/README.md for more information.');
+    }
 
     return super.onLoad();
   }
