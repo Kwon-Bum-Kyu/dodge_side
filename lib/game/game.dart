@@ -33,7 +33,7 @@ class SpacescapeGame extends FlameGame
   late Player _player;
 
   // Stores a reference to the main spritesheet.
-  late SpriteSheet spriteSheet;
+  late Sprite sprite;
 
   // Stores a reference to an enemy manager component.
   late EnemyManager _enemyManager;
@@ -72,14 +72,11 @@ class SpacescapeGame extends FlameGame
         'multi_fire.png',
         'nuke.png',
         'fire_char_walk.png',
-        'background.png'
+        'background.png',
+        'water_bullet_default.png'
       ]);
 
-      spriteSheet = SpriteSheet.fromColumnsAndRows(
-        image: images.fromCache('simpleSpace_tilesheet@2.png'),
-        columns: 8,
-        rows: 6,
-      );
+      sprite = Sprite(images.fromCache('water_bullet_default.png'));
 
       await add(world);
 
@@ -132,7 +129,7 @@ class SpacescapeGame extends FlameGame
       // Makes sure that the sprite is centered.
       _player.anchor = Anchor.center;
 
-      _enemyManager = EnemyManager(spriteSheet: spriteSheet);
+      _enemyManager = EnemyManager(sprite: sprite);
 
       // Create a fire button component on right
       // final button = ButtonComponent(

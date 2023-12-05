@@ -78,7 +78,7 @@ class Enemy extends SpriteComponent
     angle = pi;
 
     // Set the current speed from enemyData.
-    _speed = enemyData.speed * enemyData.level;
+    _speed = enemyData.speed; //* enemyData.level
 
     // Set hitpoint to correct value from enemyData.
     _hitPoints = enemyData.level * 1;

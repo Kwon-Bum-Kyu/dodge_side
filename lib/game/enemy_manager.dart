@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flame/experimental.dart';
@@ -23,12 +22,12 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   late Timer _freezeTimer;
 
   // A reference to spriteSheet contains enemy sprites.
-  SpriteSheet spriteSheet;
+  Sprite sprite;
 
   // Holds an object of Random class to generate random numbers.
   Random random = Random();
 
-  EnemyManager({required this.spriteSheet}) : super() {
+  EnemyManager({required this.sprite}) : super() {
     // Sets the timer to call _spawnEnemy() after every 1 second, until timer is explicitly stops.
     _timer = Timer(1, onTick: _spawnEnemy, repeat: true);
 
@@ -36,10 +35,6 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
     _freezeTimer = Timer(2, onTick: () {
       _timer.start();
     });
-  }
-  @override
-  Future<void> onLoad() async {
-    await game.images.load('water_bullet_default.png');
   }
 
   // Spawns a new enemy at random position at the top of the screen.
@@ -97,7 +92,7 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       final enemyData = _enemyDataList.elementAt(random.nextInt(maxLevel * 4));
 
       Enemy enemy = Enemy(
-          sprite: Sprite(game.images.fromCache('water_bullet_default.png')),
+          sprite: sprite,
           size: initialSize,
           position: position,
           enemyData: enemyData,
@@ -117,7 +112,6 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   // of enemy that can be used for spawning.
   int mapScoreToMaxEnemyLevel(int score) {
     int level = 1;
-
     if (score > 2500) {
       level = 6;
     } else if (score > 2000) {
@@ -134,7 +128,7 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   }
 
   void repeatTimer(int level) {
-    _timer.stop();
+    _timer.reset();
     _timer = Timer(1 / level, onTick: _spawnEnemy, repeat: true);
   }
 
@@ -186,27 +180,6 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       hMove: false,
     ),
     EnemyData(
-      killPoint: 2,
-      speed: 250,
-      spriteId: 9,
-      level: 1,
-      hMove: false,
-    ),
-    EnemyData(
-      killPoint: 4,
-      speed: 250,
-      spriteId: 10,
-      level: 1,
-      hMove: false,
-    ),
-    EnemyData(
-      killPoint: 4,
-      speed: 250,
-      spriteId: 11,
-      level: 1,
-      hMove: false,
-    ),
-    EnemyData(
       killPoint: 6,
       speed: 250,
       spriteId: 12,
@@ -219,20 +192,6 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       spriteId: 13,
       level: 2,
       hMove: false,
-    ),
-    EnemyData(
-      killPoint: 6,
-      speed: 250,
-      spriteId: 14,
-      level: 2,
-      hMove: false,
-    ),
-    EnemyData(
-      killPoint: 6,
-      speed: 250,
-      spriteId: 15,
-      level: 2,
-      hMove: true,
     ),
     EnemyData(
       killPoint: 10,
@@ -254,13 +213,6 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       spriteId: 18,
       level: 3,
       hMove: true,
-    ),
-    EnemyData(
-      killPoint: 10,
-      speed: 250,
-      spriteId: 19,
-      level: 3,
-      hMove: false,
     ),
     EnemyData(
       killPoint: 10,
@@ -289,6 +241,90 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       spriteId: 23,
       level: 4,
       hMove: false,
-    )
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 5,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 5,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 5,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 5,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 5,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 6,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 6,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 6,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 6,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 6,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 6,
+      hMove: false,
+    ),
+    EnemyData(
+      killPoint: 50,
+      speed: 250,
+      spriteId: 23,
+      level: 6,
+      hMove: false,
+    ),
   ];
 }

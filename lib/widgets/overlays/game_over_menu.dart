@@ -49,7 +49,10 @@ class GameOverMenu extends StatelessWidget {
               child: const Text('Restart'),
             ),
           ),
-
+          // SizedBox(
+          //   width: MediaQuery.of(context).size.width / 3,
+          //   child: const Text('Restart'),
+          // ),
           // Exit button.
           SizedBox(
             width: MediaQuery.of(context).size.width / 3,

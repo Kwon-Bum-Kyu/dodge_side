@@ -67,7 +67,7 @@ class Player extends SpriteAnimationComponent
     animation = SpriteAnimation.fromFrameData(
         sprite.image,
         SpriteAnimationData.sequenced(
-            amount: 8, stepTime: 0.1, textureSize: Vector2(24, 24)));
+            amount: 8, stepTime: 0.08, textureSize: Vector2(24, 24)));
     // Sets power up timer to 4 seconds. After 4 seconds,
     // multiple bullet will get deactivated.
     _powerUpTimer = Timer(4, onTick: () {
@@ -200,39 +200,39 @@ class Player extends SpriteAnimationComponent
   }
 
   void joystickAction() {
-    Bullet bullet = Bullet(
-      sprite: game.spriteSheet.getSpriteById(28),
-      size: Vector2(64, 64),
-      position: position.clone(),
-      level: _spaceship.level,
-    );
+    // Bullet bullet = Bullet(
+    //   sprite: game.spriteSheet.getSpriteById(28),
+    //   size: Vector2(64, 64),
+    //   position: position.clone(),
+    //   level: _spaceship.level,
+    // );
 
     // Anchor it to center and add to game world.
-    bullet.anchor = Anchor.center;
-    game.world.add(bullet);
+    // bullet.anchor = Anchor.center;
+    // game.world.add(bullet);
 
     // Ask audio player to play bullet fire effect.
-    game.addCommand(Command<AudioPlayerComponent>(action: (audioPlayer) {
-      audioPlayer.playSfx('laserSmall_001.ogg');
-    }));
+    // game.addCommand(Command<AudioPlayerComponent>(action: (audioPlayer) {
+    //   audioPlayer.playSfx('laserSmall_001.ogg');
+    // }));
 
-    // If multiple bullet is on, add two more
-    // bullets rotated +-PI/6 radians to first bullet.
-    if (_shootMultipleBullets) {
-      for (int i = -1; i < 2; i += 2) {
-        Bullet bullet = Bullet(
-          sprite: game.spriteSheet.getSpriteById(28),
-          size: Vector2(64, 64),
-          position: position.clone(),
-          level: _spaceship.level,
-        );
+    // // If multiple bullet is on, add two more
+    // // bullets rotated +-PI/6 radians to first bullet.
+    // if (_shootMultipleBullets) {
+    //   for (int i = -1; i < 2; i += 2) {
+    //     Bullet bullet = Bullet(
+    //       sprite: game.spriteSheet.getSpriteById(28),
+    //       size: Vector2(64, 64),
+    //       position: position.clone(),
+    //       level: _spaceship.level,
+    //     );
 
-        // Anchor it to center and add to game world.
-        bullet.anchor = Anchor.center;
-        bullet.direction.rotate(i * pi / 6);
-        game.world.add(bullet);
-      }
-    }
+    //     // Anchor it to center and add to game world.
+    //     bullet.anchor = Anchor.center;
+    //     bullet.direction.rotate(i * pi / 6);
+    //     game.world.add(bullet);
+    //   }
+    // }
   }
 
   // Adds given points to player score
