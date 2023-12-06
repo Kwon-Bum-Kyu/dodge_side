@@ -40,6 +40,7 @@ class SpacescapeGame extends FlameGame
 
   // Displays player score on top left.
   late TextComponent _playerScore;
+  // late TextComponent _highScore;
 
   // Displays player helth on top right.
   // late TextComponent _playerHealth;
@@ -155,6 +156,19 @@ class SpacescapeGame extends FlameGame
         ),
       );
 
+      // _highScore = TextComponent(
+      //   text: 'HighScore: ${}',
+      //   // anchor: Anchor.topRight,
+      //   position: Vector2(fixedResolution.x - 30, 30),
+      //   textRenderer: TextPaint(
+      //     style: const TextStyle(
+      //       color: Colors.white,
+      //       fontSize: 36,
+      //       fontFamily: 'BungeeInline',
+      //     ),
+      //   ),
+      // );
+      // _highScore.anchor = Anchor.topRight;
       // // Create text component for player health.
       // _playerHealth = TextComponent(
       //   text: 'Health: 100%',
@@ -188,6 +202,7 @@ class SpacescapeGame extends FlameGame
         _enemyManager,
         // button,
         _playerScore,
+        // _highScore
         // _playerHealth,
         // healthBar,
       ]);

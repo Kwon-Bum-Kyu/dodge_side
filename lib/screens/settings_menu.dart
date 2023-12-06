@@ -33,20 +33,19 @@ class SettingsMenu extends StatelessWidget {
             ),
 
             // Switch for sound effects.
-            Selector<Settings, bool>(
-              selector: (context, settings) => settings.soundEffects,
-              builder: (context, value, child) {
-                return SwitchListTile(
-                  title: const Text('Sound Effects'),
-                  value: value,
-                  onChanged: (newValue) {
-                    Provider.of<Settings>(context, listen: false).soundEffects =
-                        newValue;
-                  },
-                );
-              },
-            ),
-
+            // Selector<Settings, bool>(
+            //   selector: (context, settings) => settings.soundEffects,
+            //   builder: (context, value, child) {
+            //     return SwitchListTile(
+            //       title: const Text('Sound Effects'),
+            //       value: value,
+            //       onChanged: (newValue) {
+            //         Provider.of<Settings>(context, listen: false).soundEffects =
+            //             newValue;
+            //       },
+            //     );
+            //   },
+            // ),
             // Switch for background music.
             Selector<Settings, bool>(
               selector: (context, settings) => settings.backgroundMusic,

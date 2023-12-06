@@ -15,9 +15,9 @@ import '../models/spaceship_details.dart';
 
 import 'game.dart';
 import 'enemy.dart';
-import 'bullet.dart';
-import 'command.dart';
-import 'audio_player_component.dart';
+// import 'bullet.dart';
+// import 'command.dart';
+// import 'audio_player_component.dart';
 
 // This component class represents the player character in game.
 class Player extends SpriteAnimationComponent
