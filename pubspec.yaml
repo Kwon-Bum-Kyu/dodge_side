@@ -47,6 +47,8 @@ flutter:
     - assets/images/
     - assets/audio/
   fonts:
-    - family: BungeeInline
+    - family: NexonCart
       fonts:
-        - asset: assets/fonts/BungeeInline/BungeeInline-Regular.ttf
+        - asset: assets/fonts/NexonCart/NexonCart-Bold.ttf
+        - asset: assets/fonts/NexonCart/NexonCart-ExtraBold.ttf
+        - asset: assets/fonts/NexonCart/NexonCart-Medium.ttf

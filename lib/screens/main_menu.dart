@@ -26,13 +26,13 @@ class MainMenu extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 50.0),
                 child: Text(
-                  'Dodge Bubble',
+                  '닷지버블',
                   style: TextStyle(
                     fontSize: 50.0,
-                    color: Colors.black,
+                    color: Colors.white,
                     shadows: [
                       Shadow(
-                        blurRadius: 20.0,
+                        blurRadius: 30.0,
                         color: Colors.white,
                         offset: Offset(0, 0),
                       )

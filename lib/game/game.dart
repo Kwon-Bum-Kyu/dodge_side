@@ -66,16 +66,8 @@ class SpacescapeGame extends FlameGame
     // Initilize the game world only one time.
     if (!_isAlreadyLoaded) {
       // Loads and caches all the images for later use.
-      await images.loadAll([
-        'simpleSpace_tilesheet@2.png',
-        'freeze.png',
-        'icon_plusSmall.png',
-        'multi_fire.png',
-        'nuke.png',
-        'fire_char_walk.png',
-        'background.png',
-        'water_bullet_default.png'
-      ]);
+      await images.loadAll(
+          ['fire_char_walk.png', 'background.png', 'water_bullet_default.png']);
 
       sprite = Sprite(images.fromCache('water_bullet_default.png'));
 
@@ -151,7 +143,7 @@ class SpacescapeGame extends FlameGame
           style: const TextStyle(
             color: Colors.white,
             fontSize: 36,
-            fontFamily: 'BungeeInline',
+            fontFamily: 'NexonCart',
           ),
         ),
       );
