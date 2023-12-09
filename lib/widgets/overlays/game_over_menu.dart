@@ -46,6 +46,8 @@ class GameOverMenu extends StatelessWidget {
                 game.reset();
                 game.resumeEngine();
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightBlueAccent),
               child: const Text('Restart'),
             ),
           ),
@@ -68,6 +70,8 @@ class GameOverMenu extends StatelessWidget {
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightBlueAccent),
               child: const Text('Exit'),
             ),
           ),

@@ -109,7 +109,7 @@ class SpacescapeGame extends FlameGame
       /// cannot get current [PlayerData] here. So initilize player
       /// with the default SpaceshipType.Canary.
       const spaceshipType = SpaceshipType.canary;
-      final spaceship = Spaceship.getSpaceshipByType(spaceshipType);
+      // final spaceship = Spaceship.getSpaceshipByType(spaceshipType);
 
       _player = Player(
         joystick: joystick,
@@ -123,17 +123,6 @@ class SpacescapeGame extends FlameGame
       _player.anchor = Anchor.center;
 
       _enemyManager = EnemyManager(sprite: sprite);
-
-      // Create a fire button component on right
-      // final button = ButtonComponent(
-      //   button: CircleComponent(
-      //     radius: 60,
-      //     paint: Paint()..color = Colors.white.withOpacity(0.5),
-      //   ),
-      //   anchor: Anchor.bottomRight,
-      //   position: Vector2(fixedResolution.x - 30, fixedResolution.y - 30),
-      //   onPressed: _player.joystickAction,
-      // );
 
       // Create text component for player score.
       _playerScore = TextComponent(

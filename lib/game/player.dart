@@ -132,10 +132,7 @@ class Player extends SpriteAnimationComponent
 
     if (event is RawKeyDownEvent &&
         !event.repeat &&
-        event.logicalKey == LogicalKeyboardKey.space) {
-      // pew pew!
-      // joystickAction();
-    }
+        event.logicalKey == LogicalKeyboardKey.space) {}
 
     if (keysPressed.contains(LogicalKeyboardKey.keyW)) {
       keyboardDelta.y = -1;
@@ -197,42 +194,6 @@ class Player extends SpriteAnimationComponent
     // );
 
     // game.world.add(particleComponent);
-  }
-
-  void joystickAction() {
-    // Bullet bullet = Bullet(
-    //   sprite: game.spriteSheet.getSpriteById(28),
-    //   size: Vector2(64, 64),
-    //   position: position.clone(),
-    //   level: _spaceship.level,
-    // );
-
-    // Anchor it to center and add to game world.
-    // bullet.anchor = Anchor.center;
-    // game.world.add(bullet);
-
-    // Ask audio player to play bullet fire effect.
-    // game.addCommand(Command<AudioPlayerComponent>(action: (audioPlayer) {
-    //   audioPlayer.playSfx('laserSmall_001.ogg');
-    // }));
-
-    // // If multiple bullet is on, add two more
-    // // bullets rotated +-PI/6 radians to first bullet.
-    // if (_shootMultipleBullets) {
-    //   for (int i = -1; i < 2; i += 2) {
-    //     Bullet bullet = Bullet(
-    //       sprite: game.spriteSheet.getSpriteById(28),
-    //       size: Vector2(64, 64),
-    //       position: position.clone(),
-    //       level: _spaceship.level,
-    //     );
-
-    //     // Anchor it to center and add to game world.
-    //     bullet.anchor = Anchor.center;
-    //     bullet.direction.rotate(i * pi / 6);
-    //     game.world.add(bullet);
-    //   }
-    // }
   }
 
   // Adds given points to player score

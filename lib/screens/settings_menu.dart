@@ -74,6 +74,8 @@ class SettingsMenu extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightBlueAccent),
                   child: const Icon(Icons.arrow_back),
                 ),
               ),

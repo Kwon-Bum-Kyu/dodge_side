@@ -112,15 +112,15 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
   // of enemy that can be used for spawning.
   int mapScoreToMaxEnemyLevel(int score) {
     int level = 1;
-    if (score > 2500) {
+    if (score > 4000) {
       level = 6;
-    } else if (score > 2000) {
+    } else if (score > 3500) {
       level = 5;
-    } else if (score > 1500) {
+    } else if (score > 3000) {
       level = 4;
-    } else if (score > 1000) {
+    } else if (score > 2000) {
       level = 3;
-    } else if (score > 500) {
+    } else if (score > 1000) {
       level = 2;
     }
     repeatTimer(level);
@@ -268,14 +268,14 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       speed: 350,
       spriteId: 23,
       level: 5,
-      hMove: false,
+      hMove: true,
     ),
     EnemyData(
       killPoint: 50,
       speed: 350,
       spriteId: 23,
       level: 5,
-      hMove: false,
+      hMove: true,
     ),
     EnemyData(
       killPoint: 50,
@@ -324,21 +324,21 @@ class EnemyManager extends Component with HasGameReference<SpacescapeGame> {
       speed: 500,
       spriteId: 23,
       level: 6,
-      hMove: false,
+      hMove: true,
     ),
     EnemyData(
       killPoint: 50,
       speed: 550,
       spriteId: 23,
       level: 6,
-      hMove: false,
+      hMove: true,
     ),
     EnemyData(
       killPoint: 50,
-      speed: 600,
+      speed: 550,
       spriteId: 23,
       level: 6,
-      hMove: false,
+      hMove: true,
     ),
   ];
 }

@@ -54,6 +54,8 @@ class MainMenu extends StatelessWidget {
                       ),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightBlueAccent),
                   child: const Text('Play'),
                 ),
               ),
@@ -69,6 +71,8 @@ class MainMenu extends StatelessWidget {
                       ),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightBlueAccent),
                   child: const Text('Settings'),
                 ),
               ),
