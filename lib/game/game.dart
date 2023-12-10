@@ -1,7 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/parallax.dart';
-import 'package:flame/sprite.dart';
+// import 'package:flame/sprite.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +24,6 @@ import './audio_player_component.dart';
 class SpacescapeGame extends FlameGame
     with HasCollisionDetection, HasKeyboardHandlerComponents {
   // The whole game world.
-  @override
   final World world = World();
 
   late CameraComponent primaryCamera;

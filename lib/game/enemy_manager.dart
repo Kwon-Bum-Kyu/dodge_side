@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flame/experimental.dart';
-import 'package:flame/sprite.dart';
+// import 'package:flame/sprite.dart';
 import 'package:flame/components.dart';
 import 'package:provider/provider.dart';
 

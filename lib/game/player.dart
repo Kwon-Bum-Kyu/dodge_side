@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flame/collisions.dart';
 // import 'package:flame/effects.dart';
 import 'package:flame/experimental.dart';
-import 'package:flame/particles.dart';
+// import 'package:flame/particles.dart';
 import 'package:flame/components.dart';
 // import 'package:flame_noise/flame_noise.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +41,7 @@ class Player extends SpriteAnimationComponent
   int get score => _playerData.currentScore;
 
   // If true, player will shoot 3 bullets at a time.
-  bool _shootMultipleBullets = false;
+  // bool _shootMultipleBullets = false;
 
   // Controls for how long multi-bullet power up is active.
   late Timer _powerUpTimer;
@@ -71,7 +71,7 @@ class Player extends SpriteAnimationComponent
     // Sets power up timer to 4 seconds. After 4 seconds,
     // multiple bullet will get deactivated.
     _powerUpTimer = Timer(4, onTick: () {
-      _shootMultipleBullets = false;
+      // _shootMultipleBullets = false;
     });
   }
 
@@ -234,7 +234,7 @@ class Player extends SpriteAnimationComponent
 
   // Allows player to first multiple bullets for 4 seconds when called.
   void shootMultipleBullets() {
-    _shootMultipleBullets = true;
+    // _shootMultipleBullets = true;
     _powerUpTimer.stop();
     _powerUpTimer.start();
   }
