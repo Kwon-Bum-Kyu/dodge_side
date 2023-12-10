@@ -42,3 +42,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# assets
+assets/audio/River 6-29.wav
+assets/audio/laser1.ogg
+assets/images/*.png

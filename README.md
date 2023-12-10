@@ -1,6 +1,12 @@
-# dodge_side
+# 닷지 버블
 
-A new Flutter project.
+안드로이드 버블 피하기 게임
+
+## Licence
+
+- [오디오](https://github.com/Kwon-Bum-Kyu/dodge_side/blob/main/assets/audio/README.md)
+
+- [이미지](https://github.com/Kwon-Bum-Kyu/dodge_side/blob/main/assets/images/README.md)
 
 ## Getting Started
 

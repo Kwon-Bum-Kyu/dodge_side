@@ -16,7 +16,6 @@ class AudioPlayerComponent extends Component
     await FlameAudio.audioCache.loadAll([
       'laser1.ogg',
       'powerUp6.ogg',
-      'laserSmall_001.ogg',
     ]);
 
     try {
@@ -26,7 +25,7 @@ class AudioPlayerComponent extends Component
     } catch (_) {
       // ignore: avoid_print
       print('Missing VOiD1 Gaming music pack: '
-          'https://void1gaming.itch.io/free-synthwave-music-pack '
+          'https://brevynmusic.itch.io/short-circuits-energetic-8-bit'
           'See assets/audio/README.md for more information.');
     }
 
