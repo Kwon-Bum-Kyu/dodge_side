@@ -1,23 +1,16 @@
 import 'dart:math';
 
 import 'package:flame/collisions.dart';
-// import 'package:flame/effects.dart';
 import 'package:flame/experimental.dart';
-// import 'package:flame/particles.dart';
 import 'package:flame/components.dart';
-// import 'package:flame_noise/flame_noise.dart';
-// import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../models/player_data.dart';
-import '../models/spaceship_details.dart';
+import '../models/charactor_details.dart';
 
 import 'game.dart';
 import 'enemy.dart';
-// import 'bullet.dart';
-// import 'command.dart';
-// import 'audio_player_component.dart';
 
 // This component class represents the player character in game.
 class Player extends SpriteAnimationComponent
@@ -30,10 +23,10 @@ class Player extends SpriteAnimationComponent
   int get health => _health;
 
   // Details of current spaceship.
-  Spaceship _spaceship;
+  Charactor _charactor;
 
   // Type of current spaceship.
-  SpaceshipType spaceshipType;
+  CharactorType charactorType;
 
   // A reference to PlayerData so that
   // we can modify money.
@@ -58,11 +51,11 @@ class Player extends SpriteAnimationComponent
 
   Player({
     required this.joystick,
-    required this.spaceshipType,
+    required this.charactorType,
     required Sprite sprite,
     Vector2? position,
     Vector2? size,
-  })  : _spaceship = Spaceship.getSpaceshipByType(spaceshipType),
+  })  : _charactor = Charactor.getSpaceshipByType(charactorType),
         super(position: position, size: size) {
     animation = SpriteAnimation.fromFrameData(
         sprite.image,
@@ -163,11 +156,11 @@ class Player extends SpriteAnimationComponent
     // will be smaller and for devices with lower frame rates, it will be larger. Multiplying speed with
     // delta time ensure that player speed remains same irrespective of the device FPS.
     if (!joystick.delta.isZero()) {
-      position.add(joystick.relativeDelta * _spaceship.speed * dt);
+      position.add(joystick.relativeDelta * _charactor.speed * dt);
     }
 
     if (!keyboardDelta.isZero()) {
-      position.add(keyboardDelta * _spaceship.speed * dt);
+      position.add(keyboardDelta * _charactor.speed * dt);
     }
 
     // Clamp position of player such that the player sprite does not go outside the screen size.
@@ -226,9 +219,9 @@ class Player extends SpriteAnimationComponent
   // Changes the current spaceship type with given spaceship type.
   // This method also takes care of updating the internal spaceship details
   // as well as the spaceship sprite.
-  void setSpaceshipType(SpaceshipType spaceshipType) {
-    spaceshipType = spaceshipType;
-    _spaceship = Spaceship.getSpaceshipByType(spaceshipType);
+  void setCharactorType(CharactorType charactorType) {
+    charactorType = charactorType;
+    _charactor = Charactor.getSpaceshipByType(charactorType);
     // sprite = game.spriteSheet.getSpriteById(_spaceship.spriteId);
   }
 

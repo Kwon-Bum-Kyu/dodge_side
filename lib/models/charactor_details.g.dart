@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'spaceship_details.dart';
+part of 'charactor_details.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SpaceshipTypeAdapter extends TypeAdapter<SpaceshipType> {
+class CharactorTypeAdapter extends TypeAdapter<CharactorType> {
   @override
   final int typeId = 1;
 
   @override
-  SpaceshipType read(BinaryReader reader) {
+  CharactorType read(BinaryReader reader) {
     switch (reader.readByte()) {
       case 0:
-        return SpaceshipType.canary;
+        return CharactorType.fire;
       // case 1:
       //   return SpaceshipType.dusky;
       // case 2:
@@ -30,14 +30,14 @@ class SpaceshipTypeAdapter extends TypeAdapter<SpaceshipType> {
       // case 7:
       //   return SpaceshipType.dK809;
       default:
-        return SpaceshipType.canary;
+        return CharactorType.fire;
     }
   }
 
   @override
-  void write(BinaryWriter writer, SpaceshipType obj) {
+  void write(BinaryWriter writer, CharactorType obj) {
     switch (obj) {
-      case SpaceshipType.canary:
+      case CharactorType.fire:
         writer.writeByte(0);
         break;
       // case SpaceshipType.dusky:
@@ -70,7 +70,7 @@ class SpaceshipTypeAdapter extends TypeAdapter<SpaceshipType> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SpaceshipTypeAdapter &&
+      other is CharactorTypeAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

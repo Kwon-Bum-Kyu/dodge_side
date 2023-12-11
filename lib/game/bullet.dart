@@ -12,7 +12,7 @@ class Bullet extends SpriteComponent with CollisionCallbacks {
   Vector2 direction = Vector2(0, -1);
 
   // Level of this bullet. Essentially represents the
-  // level of spaceship that fired this bullet.
+  // level of charactor that fired this bullet.
   final int level;
 
   Bullet({

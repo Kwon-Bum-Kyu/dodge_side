@@ -11,7 +11,7 @@ import '../widgets/overlays/pause_button.dart';
 import '../widgets/overlays/game_over_menu.dart';
 
 import '../models/player_data.dart';
-import '../models/spaceship_details.dart';
+import '../models/charactor_details.dart';
 
 import './enemy.dart';
 // import './health_bar.dart';
@@ -107,12 +107,12 @@ class SpacescapeGame extends FlameGame
       /// As build context is not valid in onLoad() method, we
       /// cannot get current [PlayerData] here. So initilize player
       /// with the default SpaceshipType.Canary.
-      const spaceshipType = SpaceshipType.canary;
+      const charactorType = CharactorType.fire;
       // final spaceship = Spaceship.getSpaceshipByType(spaceshipType);
 
       _player = Player(
         joystick: joystick,
-        spaceshipType: spaceshipType,
+        charactorType: charactorType,
         sprite: Sprite(images.fromCache('fire_char_walk.png')),
         size: Vector2(64, 64),
         position: fixedResolution / 2,
@@ -201,7 +201,7 @@ class SpacescapeGame extends FlameGame
       // Get the PlayerData from current build context without registering a listener.
       final playerData = Provider.of<PlayerData>(buildContext!, listen: false);
       // Update the current spaceship type of player.
-      _player.setSpaceshipType(playerData.spaceshipType);
+      _player.setCharactorType(playerData.charactorType);
     }
     _audioPlayerComponent.playBgm('River 6-29.wav');
     super.onAttach();

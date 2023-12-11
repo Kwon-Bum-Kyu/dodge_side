@@ -2,9 +2,9 @@
 // which defines a spaceship.
 import 'package:hive/hive.dart';
 
-part 'spaceship_details.g.dart';
+part 'charactor_details.g.dart';
 
-class Spaceship {
+class Charactor {
   // Name of the spaceship.
   final String name;
 
@@ -25,7 +25,7 @@ class Spaceship {
   // Level of the spaceship.
   final int level;
 
-  const Spaceship({
+  const Charactor({
     required this.name,
     required this.cost,
     required this.speed,
@@ -36,15 +36,15 @@ class Spaceship {
 
   /// Given a spaceshipType, this method returns a corresponding
   /// Spaceship object which holds all the details of that spaceship.
-  static Spaceship getSpaceshipByType(SpaceshipType spaceshipType) {
-    /// It is highly unlikely that it [spaceships] does not contain given [spaceshipType].
-    /// But if that ever happens, we will just return data for [SpaceshipType.Canary].
-    return spaceships[spaceshipType] ?? spaceships.entries.first.value;
+  static Charactor getSpaceshipByType(CharactorType charactorType) {
+    /// It is highly unlikely that it [charactors] does not contain given [CharactorType].
+    /// But if that ever happens, we will just return data for [CharactorType.fire].
+    return charactors[charactorType] ?? charactors.entries.first.value;
   }
 
-  /// This map holds all the meta-data of each [SpaceshipType].
-  static const Map<SpaceshipType, Spaceship> spaceships = {
-    SpaceshipType.canary: Spaceship(
+  /// This map holds all the meta-data of each [CharactorType].
+  static const Map<CharactorType, Charactor> charactors = {
+    CharactorType.fire: Charactor(
       name: 'Canary',
       cost: 0,
       speed: 500,
@@ -114,9 +114,9 @@ class Spaceship {
 // This enum represents all the spaceship
 // types available in this game.
 @HiveType(typeId: 1)
-enum SpaceshipType {
+enum CharactorType {
   @HiveField(0)
-  canary,
+  fire,
 
   // @HiveField(1)
   // dusky,

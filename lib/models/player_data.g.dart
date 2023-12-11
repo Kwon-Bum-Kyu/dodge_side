@@ -17,8 +17,8 @@ class PlayerDataAdapter extends TypeAdapter<PlayerData> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return PlayerData(
-      spaceshipType: fields[0] as SpaceshipType,
-      ownedSpaceships: (fields[1] as List).cast<SpaceshipType>(),
+      charactorType: fields[0] as CharactorType,
+      ownedCharactors: (fields[1] as List).cast<CharactorType>(),
       money: fields[3] as int,
     ).._highScore = fields[2] as int;
   }
@@ -28,9 +28,9 @@ class PlayerDataAdapter extends TypeAdapter<PlayerData> {
     writer
       ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.spaceshipType)
+      ..write(obj.charactorType)
       ..writeByte(1)
-      ..write(obj.ownedSpaceships)
+      ..write(obj.ownedCharactors)
       ..writeByte(2)
       ..write(obj._highScore)
       ..writeByte(3)

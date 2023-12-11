@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'models/settings.dart';
 import 'screens/main_menu.dart';
 import 'models/player_data.dart';
-import 'models/spaceship_details.dart';
+import 'models/charactor_details.dart';
 
 /// 물 총알 이미지 : Image by <a href="https://www.freepik.com/free-vector/hand-drawn-animation-frames-element-collection_32376918.htm">Freepik</a>
 /// 불 캐릭터 이미지 출처 : https://elthen.itch.io/2d-pixel-art-fire-elemental
@@ -80,7 +80,7 @@ Future<void> initHive() async {
   await Hive.initFlutter();
 
   Hive.registerAdapter(PlayerDataAdapter());
-  Hive.registerAdapter(SpaceshipTypeAdapter());
+  Hive.registerAdapter(CharactorTypeAdapter());
   Hive.registerAdapter(SettingsAdapter());
 }
 

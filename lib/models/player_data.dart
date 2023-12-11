@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
 
-import 'spaceship_details.dart';
+import 'charactor_details.dart';
 
 part 'player_data.g.dart';
 
@@ -14,12 +14,12 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
 
   // The spaceship type of player's current spaceship.
   @HiveField(0)
-  SpaceshipType spaceshipType;
+  CharactorType charactorType;
 
-  // List of all the spaceships owned by player.
+  // List of all the characotrs owned by player.
   // Note that just storing their type is enough.
   @HiveField(1)
-  final List<SpaceshipType> ownedSpaceships;
+  final List<CharactorType> ownedCharactors;
 
   // Highest player score so far.
   @HiveField(2)
@@ -47,8 +47,8 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
   }
 
   PlayerData({
-    required this.spaceshipType,
-    required this.ownedSpaceships,
+    required this.charactorType,
+    required this.ownedCharactors,
     int highScore = 0,
     required this.money,
   }) {
@@ -57,10 +57,10 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
 
   /// Creates a new instance of [PlayerData] from given map.
   PlayerData.fromMap(Map<String, dynamic> map)
-      : spaceshipType = map['currentSpaceshipType'],
-        ownedSpaceships = map['ownedSpaceshipTypes']
-            .map((e) => e as SpaceshipType) // Map out each element.
-            .cast<SpaceshipType>() // Cast each element to SpaceshipType.
+      : charactorType = map['currentSpaceshipType'],
+        ownedCharactors = map['ownedSpaceshipTypes']
+            .map((e) => e as CharactorType) // Map out each element.
+            .cast<CharactorType>() // Cast each element to SpaceshipType.
             .toList(), // Convert to a List<SpaceshipType>.
         _highScore = map['highScore'],
         money = map['money'];
@@ -69,32 +69,32 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
   // very first PlayerData instance when game is launched
   // for the first time.
   static Map<String, dynamic> defaultData = {
-    'currentSpaceshipType': SpaceshipType.canary,
-    'ownedSpaceshipTypes': [SpaceshipType.canary],
+    'currentSpaceshipType': CharactorType.fire,
+    'ownedSpaceshipTypes': [CharactorType.fire],
     'highScore': 0,
     'money': 0,
   };
 
-  /// Returns true if given [SpaceshipType] is owned by player.
-  bool isOwned(SpaceshipType spaceshipType) {
-    return ownedSpaceships.contains(spaceshipType);
+  /// Returns true if given [CharactorType] is owned by player.
+  bool isOwned(CharactorType charactorType) {
+    return ownedCharactors.contains(charactorType);
   }
 
   /// Returns true if player has enough money to by given [SpaceshipType].
-  bool canBuy(SpaceshipType spaceshipType) {
-    return (money >= Spaceship.getSpaceshipByType(spaceshipType).cost);
+  bool canBuy(CharactorType charactorType) {
+    return (money >= Charactor.getSpaceshipByType(charactorType).cost);
   }
 
-  /// Returns true if player's current spaceship type is same as given [SpaceshipType].
-  bool isEquipped(SpaceshipType spaceshipType) {
-    return (this.spaceshipType == spaceshipType);
+  /// Returns true if player's current spaceship type is same as given [CharactorType].
+  bool isEquipped(CharactorType charactorType) {
+    return (this.charactorType == charactorType);
   }
 
-  /// Buys the given [SpaceshipType] if player has enough money and does not already own it.
-  void buy(SpaceshipType spaceshipType) {
-    if (canBuy(spaceshipType) && (!isOwned(spaceshipType))) {
-      money -= Spaceship.getSpaceshipByType(spaceshipType).cost;
-      ownedSpaceships.add(spaceshipType);
+  /// Buys the given [CharactorType] if player has enough money and does not already own it.
+  void buy(CharactorType charactorType) {
+    if (canBuy(charactorType) && (!isOwned(charactorType))) {
+      money -= Charactor.getSpaceshipByType(charactorType).cost;
+      ownedCharactors.add(charactorType);
       notifyListeners();
 
       // Saves player data to disk.
@@ -102,9 +102,9 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
     }
   }
 
-  /// Sets the given [SpaceshipType] as the current spaceship type for player.
-  void equip(SpaceshipType spaceshipType) {
-    this.spaceshipType = spaceshipType;
+  /// Sets the given [CharactorType] as the current spaceship type for player.
+  void equip(CharactorType charactorType) {
+    this.charactorType = charactorType;
     notifyListeners();
 
     // Saves player data to disk.

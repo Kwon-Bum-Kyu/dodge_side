@@ -3,15 +3,15 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 
 import '../models/player_data.dart';
-import '../models/spaceship_details.dart';
+import '../models/charactor_details.dart';
 
 import 'game_play.dart';
 import 'main_menu.dart';
 
 // Represents the spaceship selection menu from where player can
 // change current spaceship or buy a new one.
-class SelectSpaceship extends StatelessWidget {
-  const SelectSpaceship({Key? key}) : super(key: key);
+class SelectCharactor extends StatelessWidget {
+  const SelectCharactor({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +42,12 @@ class SelectSpaceship extends StatelessWidget {
             // Displays current spaceship's name and amount of money left.
             Consumer<PlayerData>(
               builder: (context, playerData, child) {
-                final spaceship =
-                    Spaceship.getSpaceshipByType(playerData.spaceshipType);
+                final charactor =
+                    Charactor.getSpaceshipByType(playerData.charactorType);
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('Ship: ${spaceship.name}'),
+                    Text('Ship: ${charactor.name}'),
                     Text('Money: ${playerData.money}'),
                   ],
                 );
@@ -57,28 +57,28 @@ class SelectSpaceship extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.5,
               child: CarouselSlider.builder(
-                itemCount: Spaceship.spaceships.length,
+                itemCount: Charactor.charactors.length,
                 slideBuilder: (index) {
-                  final spaceship =
-                      Spaceship.spaceships.entries.elementAt(index).value;
+                  final charactor =
+                      Charactor.charactors.entries.elementAt(index).value;
 
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(spaceship.assetPath),
-                      Text(spaceship.name),
+                      Image.asset(charactor.assetPath),
+                      Text(charactor.name),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Speed: ${spaceship.speed}'),
-                          Text('Level: ${spaceship.level}'),
-                          Text('Cost: ${spaceship.cost}'),
+                          Text('Speed: ${charactor.speed}'),
+                          Text('Level: ${charactor.level}'),
+                          Text('Cost: ${charactor.cost}'),
                         ],
                       ),
                       Consumer<PlayerData>(
                         builder: (context, playerData, child) {
                           final type =
-                              Spaceship.spaceships.entries.elementAt(index).key;
+                              Charactor.charactors.entries.elementAt(index).key;
                           final isEquipped = playerData.isEquipped(type);
                           final isOwned = playerData.isOwned(type);
                           final canBuy = playerData.canBuy(type);
@@ -105,7 +105,7 @@ class SelectSpaceship extends StatelessWidget {
                                                 textAlign: TextAlign.center,
                                               ),
                                               content: Text(
-                                                'Need ${spaceship.cost - playerData.money} more',
+                                                'Need ${charactor.cost - playerData.money} more',
                                                 textAlign: TextAlign.center,
                                               ),
                                             );
