@@ -42,8 +42,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/dodge-bubble-fastlane-project-8a03460e24b8.json
 
 # assets
 assets/audio/River 6-29.wav
 assets/audio/laser1.ogg
 assets/images/*.png
+
+
+# fastlane
+ios/*.mobileprovision
+ios/*.cer
+ios/*.dSYM.zip
+android/fastlane/README.md
+ios/fastlane/README.md
