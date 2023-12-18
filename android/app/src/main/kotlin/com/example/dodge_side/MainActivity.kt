@@ -1,4 +1,4 @@
-package com.example.dodge_side
+package com.bmk.dodgebubble
 
 import io.flutter.embedding.android.FlutterActivity
 
